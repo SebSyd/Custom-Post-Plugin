@@ -1,0 +1,57 @@
+<?php
+/*
+Plugin Name: Code
+Plugin URI: 
+Description: The code we use to power Code post type in our website.
+Version: 1.0
+Author: seb
+Author URI: 
+License: GPLv2
+*/
+ // let's create the function for the custom type
+function code_post_type() {
+    $labels = array(
+        'name' => 'Code',
+        'singular_name' => 'Code',
+        'all_items' => 'All Items',
+        'add_new' => 'Add New',
+        'add_new_item' => 'Add New Code',
+        'edit' => 'edit',
+        'edit_item' => 'Edit Code',
+        'new_item' => 'New Code',
+        'view_item' => 'View Code',
+        'search_items' => 'Search Code',
+        'not_found' =>  'No Code found',
+        'not_found_in_trash' => 'No Code in the trash',
+        'parent_item_colon' => '',
+		'description' => __( 'This is the Code custom post type'), 
+    );
+
+    register_post_type( 'Code', array(
+        'labels' => $labels,
+        'public' => true,
+        'publicly_queryable' => true,
+        'show_ui' => true,
+        'exclude_from_search' => true,
+        'query_var' => true,
+        'rewrite' => true,
+        'capability_type' => 'post',
+        'has_archive' => true,
+        'hierarchical' => false,
+        'menu_position' => 6,
+        'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'trackbacks', 'custom-fields', 'comments', 'revisions', 'sticky')
+	 	 /* end of options */
+    ) );
+    	/* this adds your post categories to your custom post type */
+	register_taxonomy_for_object_type('category', 'code');
+	/* this adds your post tags to your custom post type */
+	register_taxonomy_for_object_type('post_tag', 'code');
+}
+
+add_action( 'init', 'code_post_type' );
+
+
+
+
+
+?>
