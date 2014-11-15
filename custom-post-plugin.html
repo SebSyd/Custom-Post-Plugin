@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Code
+Plugin Name: Example
 Plugin URI: 
 Description: The code we use to power Code post type in our website.
 Version: 1.0
@@ -9,25 +9,25 @@ Author URI:
 License: GPLv2
 */
  // let's create the function for the custom type
-function code_post_type() {
+function example_post_type() {
     $labels = array(
-        'name' => 'Code',
-        'singular_name' => 'Code',
+        'name' => 'Example',
+        'singular_name' => 'Example',
         'all_items' => 'All Items',
         'add_new' => 'Add New',
-        'add_new_item' => 'Add New Code',
+        'add_new_item' => 'Add New Example',
         'edit' => 'edit',
-        'edit_item' => 'Edit Code',
-        'new_item' => 'New Code',
-        'view_item' => 'View Code',
-        'search_items' => 'Search Code',
-        'not_found' =>  'No Code found',
-        'not_found_in_trash' => 'No Code in the trash',
+        'edit_item' => 'Edit Example',
+        'new_item' => 'New Example',
+        'view_item' => 'View Example',
+        'search_items' => 'Search Example',
+        'not_found' =>  'No Example found',
+        'not_found_in_trash' => 'No Example in the trash',
         'parent_item_colon' => '',
-		'description' => __( 'This is the Code custom post type'), 
+		'description' => __( 'This is the Example custom post type'), 
     );
 
-register_post_type( 'Code', array(
+register_post_type( 'example', array(
         'labels' => $labels,
         'public' => true,
         'publicly_queryable' => true,
@@ -43,10 +43,10 @@ register_post_type( 'Code', array(
 	 	 /* end of options */
     ) );
     	/* this adds your post categories to your custom post type */
-	register_taxonomy_for_object_type('category', 'code');
+	register_taxonomy_for_object_type('category', 'example');
 	/* this adds your post tags to your custom post type */
-	register_taxonomy_for_object_type('post_tag', 'code');
+	register_taxonomy_for_object_type('post_tag', 'example');
 }
 
-    add_action( 'init', 'code_post_type' );
+    add_action( 'init', 'example_post_type' );
 ?>
